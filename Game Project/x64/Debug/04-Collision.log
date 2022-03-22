@@ -1,0 +1,41 @@
+﻿  debug.cpp
+D:\New folder-20220320T064005Z-001\New folder\debug.cpp(11,27): error C2664: 'void OutputDebugStringA(LPCSTR)': cannot convert argument 1 from 'wchar_t [4096]' to 'LPCSTR'
+D:\New folder-20220320T064005Z-001\New folder\debug.cpp(11,20): message : Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or parenthesized function-style cast
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\debugapi.h(55,1): message : see declaration of 'OutputDebugStringA'
+  Game.cpp
+D:\New folder-20220320T064005Z-001\New folder\Game.cpp(43,53): error C2664: 'void OutputDebugStringA(LPCSTR)': cannot convert argument 1 from 'const wchar_t [29]' to 'LPCSTR'
+D:\New folder-20220320T064005Z-001\New folder\Game.cpp(43,21): message : Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or parenthesized function-style cast
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\debugapi.h(55,1): message : see declaration of 'OutputDebugStringA'
+D:\New folder-20220320T064005Z-001\New folder\Game.cpp(52,46): error C2664: 'void OutputDebugStringA(LPCSTR)': cannot convert argument 1 from 'const wchar_t [23]' to 'LPCSTR'
+D:\New folder-20220320T064005Z-001\New folder\Game.cpp(52,20): message : Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or parenthesized function-style cast
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\debugapi.h(55,1): message : see declaration of 'OutputDebugStringA'
+D:\New folder-20220320T064005Z-001\New folder\Game.cpp(60,39): warning C4244: 'argument': conversion from 'double' to 'FLOAT', possible loss of data
+D:\New folder-20220320T064005Z-001\New folder\Game.cpp(60,21): warning C4244: 'argument': conversion from 'double' to 'FLOAT', possible loss of data
+D:\New folder-20220320T064005Z-001\New folder\Game.cpp(79,35): error C2065: 'GWL_HINSTANCE': undeclared identifier
+D:\New folder-20220320T064005Z-001\New folder\Game.cpp(259,26): warning C4305: '=': truncation from '__int64' to 'float'
+D:\New folder-20220320T064005Z-001\New folder\Game.cpp(260,24): warning C4305: '=': truncation from '__int64' to 'float'
+D:\New folder-20220320T064005Z-001\New folder\Game.cpp(270,26): warning C4305: '=': truncation from '__int64' to 'float'
+D:\New folder-20220320T064005Z-001\New folder\Game.cpp(271,24): warning C4305: '=': truncation from '__int64' to 'float'
+  GameObject.cpp
+  main.cpp
+D:\New folder-20220320T064005Z-001\New folder\main.cpp(363,28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\New folder-20220320T064005Z-001\New folder\main.cpp(454,38): error C2440: '=': cannot convert from 'const wchar_t [13]' to 'LPCSTR'
+D:\New folder-20220320T064005Z-001\New folder\main.cpp(454,21): message : Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or parenthesized function-style cast
+D:\New folder-20220320T064005Z-001\New folder\main.cpp(460,1): error C2664: 'HWND CreateWindowExA(DWORD,LPCSTR,LPCSTR,DWORD,int,int,int,int,HWND,HMENU,HINSTANCE,LPVOID)': cannot convert argument 2 from 'const wchar_t [13]' to 'LPCSTR'
+D:\New folder-20220320T064005Z-001\New folder\main.cpp(460,1): message : Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or parenthesized function-style cast
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winuser.h(4416,1): message : see declaration of 'CreateWindowExA'
+D:\New folder-20220320T064005Z-001\New folder\main.cpp(475,51): error C2664: 'void OutputDebugStringA(LPCSTR)': cannot convert argument 1 from 'const wchar_t [28]' to 'LPCSTR'
+D:\New folder-20220320T064005Z-001\New folder\main.cpp(475,21): message : Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or parenthesized function-style cast
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\debugapi.h(55,1): message : see declaration of 'OutputDebugStringA'
+  Character.cpp
+  Textures.cpp
+D:\New folder-20220320T064005Z-001\New folder\Textures.cpp(26,59): error C2664: 'HRESULT D3DXGetImageInfoFromFileA(LPCSTR,D3DXIMAGE_INFO *)': cannot convert argument 1 from 'LPCWSTR' to 'LPCSTR'
+D:\New folder-20220320T064005Z-001\New folder\Textures.cpp(26,44): message : Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or parenthesized function-style cast
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\d3dx9tex.h(283,5): message : see declaration of 'D3DXGetImageInfoFromFileA'
+D:\New folder-20220320T064005Z-001\New folder\Textures.cpp(36,11): error C2664: 'HRESULT D3DXCreateTextureFromFileExA(LPDIRECT3DDEVICE9,LPCSTR,UINT,UINT,UINT,DWORD,D3DFORMAT,D3DPOOL,DWORD,DWORD,D3DCOLOR,D3DXIMAGE_INFO *,PALETTEENTRY *,LPDIRECT3DTEXTURE9 *)': cannot convert argument 2 from 'LPCWSTR' to 'LPCSTR'
+D:\New folder-20220320T064005Z-001\New folder\Textures.cpp(38,3): message : Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or parenthesized function-style cast
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\d3dx9tex.h(1194,5): message : see declaration of 'D3DXCreateTextureFromFileExA'
+D:\New folder-20220320T064005Z-001\New folder\Textures.cpp(54,62): error C2664: 'void OutputDebugStringA(LPCSTR)': cannot convert argument 1 from 'const wchar_t [38]' to 'LPCSTR'
+D:\New folder-20220320T064005Z-001\New folder\Textures.cpp(54,21): message : Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or parenthesized function-style cast
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\debugapi.h(55,1): message : see declaration of 'OutputDebugStringA'
+  Generating Code...
