@@ -1,0 +1,18 @@
+# list of object assets to load in this scene
+[ASSETS]
+marco.txt
+cloud.txt
+map.txt
+
+#
+[OBJECTS]
+# type	x	y	extra_settings per object type
+# type: 0 = Mario , 1 = Brick, 2 = Goomba, 3 = Koopas
+# See OBJECT_TYPE constants in AssetIDs.h
+
+#Platform
+5	700	60	1	1	1	90000	90000	90000
+5	90	136	16	15	160	51000	51000	51000
+
+# MACRO
+0	100	10
