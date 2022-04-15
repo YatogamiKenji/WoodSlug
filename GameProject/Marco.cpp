@@ -9,9 +9,9 @@
 void CMARCO::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
 	vy += ay * dt;
-	x += vx * dt;
+	vx += ax * dt;
 
-	if (abs(vx) > abs(maxVx)) vx = maxVx;
+	
 
 	// reset untouchable timer if untouchable time has passed
 	if (GetTickCount64() - untouchable_start > MARCO_UNTOUCHABLE_TIME)
@@ -153,7 +153,7 @@ void CMARCO::Render()
 
 	//RenderBoundingBox();
 
-	DebugOutTitle(L"Coins: %d", coin);
+	//DebugOutTitle(L"Coins: %d", coin);
 }
 
 void CMARCO::SetState(int state)

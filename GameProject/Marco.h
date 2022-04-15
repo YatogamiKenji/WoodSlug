@@ -65,7 +65,6 @@ class CMARCO : public CGameObject
 	float ax;				// acceleration on x 
 	float ay;				// acceleration on y 
 
-	int level;
 	int untouchable;
 	ULONGLONG untouchable_start;
 	BOOLEAN isOnPlatform;
@@ -79,7 +78,6 @@ public:
 	CMARCO(float x, float y) : CGameObject(x, y)
 	{
 		isSitting = false;
-		maxVx = 0.0f;
 		ax = 0.0f;
 		ay = MARCO_GRAVITY;
 

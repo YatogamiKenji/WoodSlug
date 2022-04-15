@@ -7,6 +7,7 @@
 #include "Sprites.h"
 
 #include "Marco.h"
+#include "Chowmein_Conga.h"
 #include "Platform.h"
 #include "AssetIDs.h"
 
@@ -116,7 +117,7 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 
 		DebugOut(L"[INFO] Player object has been created!\n");
 		break;
-	//case OBJECT_TYPE_GOOMBA: obj = new CGoomba(x, y); break;
+	case OBJECT_TYPE_CHOWMEIN_CONGA: obj = new Chowmein_Conga(x, y); break;
 	//case OBJECT_TYPE_BRICK: obj = new CBrick(x, y); break;
 	//case OBJECT_TYPE_COIN: obj = new CCoin(x, y); break;
 
