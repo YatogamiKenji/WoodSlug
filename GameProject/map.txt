@@ -1,6 +1,12 @@
 # id	left	top	right	bottom	texture_id
 [SPRITES]
-90000	2	2	2375	274	30
+
+110010101	2	2	2375	274	30
+110010102	2377	82	2889	274	30
+110010103	0	1192	1608	1416	30
+#THE FOREST						
+110040101	1614	859	5025	1086	30
+
 
 # ani_id	sprite1_id	time1	sprite2_id	time2	...
 [ANIMATIONS]

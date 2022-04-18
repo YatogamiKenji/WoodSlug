@@ -61,7 +61,7 @@ void Chowmein_Conga::Render()
 		aniId = ID_ANI_CHOWMEIN_CONGA_DIE;
 	}
 
-	CAnimations::GetInstance()->Get(aniId)->Render(x, y);
+	CAnimations::GetInstance()->Get(aniId)->Render(x, y, 1);
 	RenderBoundingBox();
 }
 

@@ -1,10 +1,12 @@
 #include "Bullet.h"
+#include "Chowmein_Conga.h"
+
+#include "Collision.h"
 
 Bullet::Bullet(float x, float y) : CGameObject(x, y)
 {
 	this->ax = BULLET_SPEED;
 	this->ay = 0;
-	die_start = -1;
 }
 
 void Bullet::GetBoundingBox(float& left, float& top, float& right, float& bottom)
@@ -23,19 +25,24 @@ void Bullet::OnNoCollision(DWORD dt)
 
 void Bullet::OnCollisionWith(LPCOLLISIONEVENT e)
 {
-	isDeleted = true;
+	isDeleted = true; 
+	if (dynamic_cast<Chowmein_Conga*>(e->obj))
+		OnCollisionWithChowmeinConga(e);
+}
+
+void Bullet::OnCollisionWithChowmeinConga(LPCOLLISIONEVENT e)
+{
+	Chowmein_Conga* chowmein = dynamic_cast<Chowmein_Conga*>(e->obj);
+	if (chowmein->GetState() != CHOWMEIN_CONGA_STATE_DIE)
+	{
+		chowmein->SetState(CHOWMEIN_CONGA_STATE_DIE);
+	}
 }
 
 void Bullet::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
 	vy += ay * dt;
 	vx += ax * dt;
-
-	if ((GetTickCount64() - die_start > BULLET_DIE_TIMEOUT))
-	{
-		isDeleted = true;
-		return;
-	}
 
 	CGameObject::Update(dt, coObjects);
 	CCollision::GetInstance()->Process(this, dt, coObjects);

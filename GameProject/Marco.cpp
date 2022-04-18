@@ -2,7 +2,11 @@
 #include "debug.h"
 
 #include "Marco.h"
+#include "Chowmein_Conga.h"
 #include "Game.h"
+#include "Portal.h"
+#include "Bullet.h"
+#include "PlayScene.h"
 
 #include "Collision.h"
 
@@ -10,9 +14,7 @@ void CMARCO::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
 	vy += ay * dt;
 	vx += ax * dt;
-
 	
-
 	// reset untouchable timer if untouchable time has passed
 	if (GetTickCount64() - untouchable_start > MARCO_UNTOUCHABLE_TIME)
 	{
@@ -29,6 +31,8 @@ void CMARCO::OnNoCollision(DWORD dt)
 {
 	x += vx * dt;
 	y += vy * dt;
+	DebugOut(L"x = %d\n", x);
+	DebugOut(L"y = %d\n", y);
 }
 
 void CMARCO::OnCollisionWith(LPCOLLISIONEVENT e)
@@ -44,47 +48,37 @@ void CMARCO::OnCollisionWith(LPCOLLISIONEVENT e)
 			vx = 0;
 		}
 
-	//if (dynamic_cast<CGoomba*>(e->obj))
-	//	OnCollisionWithGoomba(e);
+	if (dynamic_cast<Chowmein_Conga*>(e->obj))
+		OnCollisionWithChowmeinConga(e);
 	//else if (dynamic_cast<CCoin*>(e->obj))
 	//	OnCollisionWithCoin(e);
-	//else if (dynamic_cast<CPortal*>(e->obj))
-	//	OnCollisionWithPortal(e);
+	else if (dynamic_cast<Portal*>(e->obj))
+		OnCollisionWithPortal(e);
+	DebugOut(L"x = %f\n", x);
+	DebugOut(L"y = %f\n", y);
 }
 
-//void CMARCO::OnCollisionWithGoomba(LPCOLLISIONEVENT e)
-//{
-//	CGoomba* goomba = dynamic_cast<CGoomba*>(e->obj);
-//
-//	// jump on top >> kill Goomba and deflect a bit 
-//	if (e->ny < 0)
-//	{
-//		if (goomba->GetState() != GOOMBA_STATE_DIE)
-//		{
-//			goomba->SetState(GOOMBA_STATE_DIE);
-//			vy = -MARCO_JUMP_DEFLECT_SPEED;
-//		}
-//	}
-//	else // hit by Goomba
-//	{
-//		if (untouchable == 0)
-//		{
-//			if (goomba->GetState() != GOOMBA_STATE_DIE)
-//			{
-//				if (level > MARCO_LEVEL_SMALL)
-//				{
-//					level = MARCO_LEVEL_SMALL;
-//					StartUntouchable();
-//				}
-//				else
-//				{
-//					DebugOut(L">>> MARCO DIE >>> \n");
-//					SetState(MARCO_STATE_DIE);
-//				}
-//			}
-//		}
-//	}
-//}
+void CMARCO::OnCollisionWithChowmeinConga(LPCOLLISIONEVENT e)
+{
+	Chowmein_Conga* chowmein = dynamic_cast<Chowmein_Conga*>(e->obj);
+
+	// jump on top >> kill Goomba and deflect a bit 
+	if (e->ny < 0)
+	{
+		if (chowmein->GetState() != CHOWMEIN_CONGA_STATE_DIE)
+		{
+			chowmein->SetState(CHOWMEIN_CONGA_STATE_DIE);
+			vy = -MARCO_JUMP_DEFLECT_SPEED;
+		}
+	}
+	else // hit by Goomba
+	{
+		/*if (killing)
+		{
+				chowmein->SetState(CHOWMEIN_CONGA_STATE_DIE);
+		}*/
+	}
+}
 //
 //void CMARCO::OnCollisionWithCoin(LPCOLLISIONEVENT e)
 //{
@@ -92,11 +86,11 @@ void CMARCO::OnCollisionWith(LPCOLLISIONEVENT e)
 //	coin++;
 //}
 //
-//void CMARCO::OnCollisionWithPortal(LPCOLLISIONEVENT e)
-//{
-//	CPortal* p = (CPortal*)e->obj;
-//	CGame::GetInstance()->InitiateSwitchScene(p->GetSceneId());
-//}
+void CMARCO::OnCollisionWithPortal(LPCOLLISIONEVENT e)
+{
+	Portal* p = (Portal*)e->obj;
+	CGame::GetInstance()->InitiateSwitchScene(p->GetSceneId());
+}
 
 
 //
@@ -147,10 +141,17 @@ void CMARCO::Render()
 
 	if (state == MARCO_STATE_DIE)
 		aniId = ID_ANI_MARCO_DIE;
-	aniId = GetAniId();
+	else if (state == MARCO_STATE_SHOOTING)
+	{
+		aniId = ID_ANI_MARCO_SHOOTING_RIGHT;
+		animations->Get(aniId)->Render(x, y);
+		aniId = ID_ANI_LEG;
+		animations->Get(aniId)->Render(x - 5, y + 14);
+		return;
+	}
+	else aniId = GetAniId();
 
 	animations->Get(aniId)->Render(x, y);
-
 	//RenderBoundingBox();
 
 	//DebugOutTitle(L"Coins: %d", coin);
@@ -207,6 +208,9 @@ void CMARCO::SetState(int state)
 	case MARCO_STATE_IDLE:
 		ax = 0.0f;
 		vx = 0.0f;
+		break;
+
+	case MARCO_STATE_SHOOTING:
 		break;
 
 	case MARCO_STATE_DIE:

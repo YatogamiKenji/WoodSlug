@@ -18,4 +18,7 @@ height	240
 10	textures\enemies.png
 20	textures\misc.png
 30	textures\Mission1.png
-40	textures\Chowmein_Conga.png
+10001	textures\Chowmein_Conga.png
+50	textures\Marco_Full.gif
+60	textures\Weapon_SFX.png
+70	textures\Mission1_seaway.png

@@ -22,6 +22,9 @@ void CSampleKeyHandler::OnKeyDown(int KeyCode)
 	case DIK_0:
 		MARCO->SetState(MARCO_STATE_DIE);
 		break;
+	case DIK_A:
+		MARCO->SetState(MARCO_STATE_SHOOTING);
+		break;
 	case DIK_R: // reset
 		//Reload();
 		break;

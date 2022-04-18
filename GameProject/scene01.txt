@@ -4,6 +4,7 @@ marco.txt
 cloud.txt
 map.txt
 chowmein_conga.txt
+bullet.txt
 
 #
 [OBJECTS]
@@ -12,11 +13,19 @@ chowmein_conga.txt
 # See OBJECT_TYPE constants in AssetIDs.h
 
 #Platform
-5	700	60	1	1	1	90000	0	0
-5	20	150	16	15	160	0	0	0
+5	700	50	1	1	1	110010101	0	0
+5	2140	90	1	1	1	110010102	0	0
+5	3086	100	1	1	1	110040101	0	0
+5	804	90	1	1	1	110010103	0	0
+5	20	180	16	15	160	0	0	0
 
 # MACRO
 0	100	10
 
 #CHOWMEIN_CONGA
-2	700	10
+2	400	10
+2	300	10
+2	250	10
+2	200	10
+#Portal 
+50	1570	130	1600	160	2

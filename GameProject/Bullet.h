@@ -3,10 +3,8 @@
 
 #define BULLET_SPEED 1.0f
 
-#define BULLET_BBOX_WIDTH 3
-#define BULLET_BBOX_HEIGHT 3
-
-#define BULLET_DIE_TIMEOUT 100
+#define BULLET_BBOX_WIDTH 16
+#define BULLET_BBOX_HEIGHT 16
 
 #define ID_ANI_BULLET 8000
 
@@ -16,7 +14,7 @@ protected:
 	float ax;
 	float ay;
 
-	ULONGLONG die_start;
+	int ammo;
 
 	virtual void GetBoundingBox(float& left, float& top, float& right, float& bottom);
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects);
@@ -24,7 +22,8 @@ protected:
 
 	virtual void OnNoCollision(DWORD dt);
 
-	virtual void OnCollisionWith(LPCOLLISIONEVENT e);
+	virtual void OnCollisionWith(LPCOLLISIONEVENT e); 
+	void OnCollisionWithChowmeinConga(LPCOLLISIONEVENT e);
 
 public:
 	Bullet(float x, float y);

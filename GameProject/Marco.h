@@ -25,13 +25,17 @@
 #define MARCO_STATE_SIT				600
 #define MARCO_STATE_SIT_RELEASE		601
 
+#define MARCO_STATE_SHOOTING		900
+
 
 #pragma region ANIMATION_ID
 
 #define ID_ANI_MARCO_IDLE_RIGHT 400
 #define ID_ANI_MARCO_IDLE_LEFT 401
 
-#define ID_ANI_MARCO_WALKING_RIGHT 500
+#define ID_ANI_LEG 410
+
+#define ID_ANI_MARCO_WALKING_RIGHT 500	
 #define ID_ANI_MARCO_WALKING_LEFT 501
 
 #define ID_ANI_MARCO_JUMP_WALK_RIGHT 700
@@ -41,6 +45,9 @@
 #define ID_ANI_MARCO_SIT_LEFT 901
 
 #define ID_ANI_MARCO_DIE 999
+
+#define ID_ANI_MARCO_SHOOTING_RIGHT 1100001
+
 
 #pragma endregion
 
@@ -53,8 +60,8 @@
 
 #define MARCO_SIT_HEIGHT_ADJUST ((MARCO_BIG_BBOX_HEIGHT-MARCO_BIG_SITTING_BBOX_HEIGHT)/2)
 
-#define MARCO_SMALL_BBOX_WIDTH  13
-#define MARCO_SMALL_BBOX_HEIGHT 12
+#define MARCO_SMALL_BBOX_WIDTH  29
+#define MARCO_SMALL_BBOX_HEIGHT 16
 
 #define MARCO_UNTOUCHABLE_TIME 2500
 
@@ -68,11 +75,13 @@ class CMARCO : public CGameObject
 	int untouchable;
 	ULONGLONG untouchable_start;
 	BOOLEAN isOnPlatform;
-	int coin;/*
+	int coin;
 
-	void OnCollisionWithGoomba(LPCOLLISIONEVENT e);
-	void OnCollisionWithCoin(LPCOLLISIONEVENT e);
-	void OnCollisionWithPortal(LPCOLLISIONEVENT e);*/
+	bool killing;
+
+	void OnCollisionWithChowmeinConga(LPCOLLISIONEVENT e);
+	//void OnCollisionWithCoin(LPCOLLISIONEVENT e);
+	void OnCollisionWithPortal(LPCOLLISIONEVENT e);
 
 public:
 	CMARCO(float x, float y) : CGameObject(x, y)
